@@ -11,7 +11,7 @@ cd /tmp/kukui-kernel
 
 # Download the APK
 # curl -LO "$KERNEL_APK_URL"
-cp /ctx/kukui-kernel.tar.gz .
+cp /ctx/6.12.28-stb-cbm+.tar.gz .
 
 # Extract kernel image and modules from APK
 tar -xzf *.tar.gz
