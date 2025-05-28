@@ -2,6 +2,11 @@
 
 set -ouex pipefail
 
+# Unpack linux.apk
+tar -xzf /var/cache/postmarketos/mt8183.apk
+mv /var/cache/postmarketos/boot /boot/vmlinuz-kukui
+mv /var/cache/postmarketos/lib/modules /lib/modules
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.

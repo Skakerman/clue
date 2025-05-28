@@ -7,8 +7,7 @@ FROM ghcr.io/ublue-os/bluefin:lts-arm64
 
 # Copy in your custom kernel and modules
 # (Assume you have downloaded/extracted them to build_files/kukui-kernel/)
-COPY build_files/kukui-kernel/boot /boot/vmlinuz-kukui
-COPY build_files/kukui-kernel/lib/modules /lib/modules
+COPY build_files/linux-postmarketos-mediatek-mt8183-6.6.61-r0.apk /var/cache/postmarketos/mt8183.apk
 
 # Optionally update bootloader configs or symlinks
 # RUN ln -sf /boot/vmlinuz-kukui /boot/vmlinuz && \
