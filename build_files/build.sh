@@ -2,15 +2,11 @@
 
 set -ouex pipefail
 
-# Specify the desired postmarketOS kernel APK URL (replace version with the latest if needed)
-# KERNEL_APK_URL="https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/releases/download/6.12.28-stb-cbm%2B/6.12.28-stb-cbm%2B.tar.gz"
-
 # Create a working directory
 mkdir -p /tmp/kukui-kernel
 cd /tmp/kukui-kernel
 
 # Download the APK
-# curl -LO "$KERNEL_APK_URL"
 cp /ctx/6.12.28-stb-cbm+.tar.gz .
 
 # Extract kernel image and modules from APK
@@ -23,7 +19,7 @@ cp -r lib/modules/* /lib/modules/
 
 # Optionally: update symlinks and run depmod
 ln -sf /boot/vmlinuz-kukui /boot/vmlinuz
-depmod
+#depmod
 
 # Clean up
 cd /
