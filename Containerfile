@@ -5,6 +5,15 @@ COPY build_files /
 # Base Image
 FROM ghcr.io/ublue-os/bluefin:lts-arm64
 
+# Copy in your custom kernel and modules
+# (Assume you have downloaded/extracted them to build_files/kukui-kernel/)
+COPY build_files/kukui-kernel/boot /boot/vmlinuz-kukui
+COPY build_files/kukui-kernel/lib/modules /lib/modules
+
+# Optionally update bootloader configs or symlinks
+RUN ln -sf /boot/vmlinuz-kukui /boot/vmlinuz && \
+    depmod $(ls /lib/modules)
+
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
