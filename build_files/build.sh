@@ -11,7 +11,7 @@ cd /tmp/kukui-kernel
 
 # Download the APK
 # curl -LO "$KERNEL_APK_URL"
-cp /var/cache/kukui-kernel.tar.gz .
+cp /ctx/kukui-kernel.tar.gz .
 
 # Extract kernel image and modules from APK
 tar -xzf *.tar.gz
