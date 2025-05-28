@@ -2,10 +2,31 @@
 
 set -ouex pipefail
 
-# Unpack linux.apk
-tar -xzf /var/cache/postmarketos/mt8183.apk
-mv /var/cache/postmarketos/boot /boot/vmlinuz-kukui
-mv /var/cache/postmarketos/lib/modules /lib/modules
+# Specify the desired postmarketOS kernel APK URL (replace version with the latest if needed)
+# KERNEL_APK_URL="https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/releases/download/6.12.28-stb-cbm%2B/6.12.28-stb-cbm%2B.tar.gz"
+
+# Create a working directory
+# mkdir -p /tmp/kukui-kernel
+cd /tmp/kukui-kernel
+
+# Download the APK
+curl -LO "$KERNEL_APK_URL"
+
+# Extract kernel image and modules from APK
+tar -xzf *.tar.gz
+
+# Move kernel image and modules to appropriate locations in the container
+# (Adjust paths as needed for your base image)
+cp boot /boot/vmlinuz-kukui
+cp -r lib/modules/* /lib/modules/
+
+# Optionally: update symlinks and run depmod
+ln -sf /boot/vmlinuz-kukui /boot/vmlinuz
+depmod
+
+# Clean up
+cd /
+rm -rf /tmp/kukui-kernel
 
 ### Install packages
 
