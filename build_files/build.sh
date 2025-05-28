@@ -18,7 +18,7 @@ tar -xzf *.tar.gz
 
 # Move kernel image and modules to appropriate locations in the container
 # (Adjust paths as needed for your base image)
-cp boot /boot/vmlinuz-kukui
+cp -r boot /boot/vmlinuz-kukui
 cp -r lib/modules/* /lib/modules/
 
 # Optionally: update symlinks and run depmod
