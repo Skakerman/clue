@@ -6,11 +6,12 @@ set -ouex pipefail
 # KERNEL_APK_URL="https://github.com/hexdump0815/linux-mainline-mediatek-mt81xx-kernel/releases/download/6.12.28-stb-cbm%2B/6.12.28-stb-cbm%2B.tar.gz"
 
 # Create a working directory
-# mkdir -p /tmp/kukui-kernel
+mkdir -p /tmp/kukui-kernel
 cd /tmp/kukui-kernel
 
 # Download the APK
-curl -LO "$KERNEL_APK_URL"
+# curl -LO "$KERNEL_APK_URL"
+cp /var/cache/kukui-kernel.tar.gz .
 
 # Extract kernel image and modules from APK
 tar -xzf *.tar.gz

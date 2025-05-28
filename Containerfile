@@ -7,7 +7,7 @@ FROM ghcr.io/ublue-os/bluefin:lts-arm64
 
 # Copy in your custom kernel and modules
 # (Assume you have downloaded/extracted them to build_files/kukui-kernel/)
-COPY build_files/6.12.28-stb-cbm+.tar.gz /tmp/kukui-kernel/
+COPY build_files/6.12.28-stb-cbm+.tar.gz /var/cache/kukui-kernel.tar.gz
 
 # Optionally update bootloader configs or symlinks
 # RUN ln -sf /boot/vmlinuz-kukui /boot/vmlinuz && \
