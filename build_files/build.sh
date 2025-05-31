@@ -2,13 +2,19 @@
 
 set -ouex pipefail
 
+KERNEL_VERSION="6.12.28-stb-cbm+"
+
 cd /ctx
 
 # Extract kernel image and modules from APK
-tar -xzf 6.12.28-stb-cbm+.tar.gz.tar.gz -C custom_kernel
+tar -xzf ${KERNEL_VERSION}.tar.gz.tar.gz -C custom_kernel
 
 copy -r custom_kernel/boot /boot
 copy -r custom_kernel/lib/modules /lib/modules
+
+# Initramfs
+/usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
+chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
 
 ### Install packages
 
