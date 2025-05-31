@@ -1,3 +1,9 @@
+This place is not a place of honor.  
+No highly esteemed deed is commemorated here.  
+Nothing valued is here.
+
+----
+
 # image-template
 
 # Purpose
