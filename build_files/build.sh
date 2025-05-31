@@ -2,28 +2,13 @@
 
 set -ouex pipefail
 
-# Create a working directory
-mkdir -p /tmp/kukui-kernel
-cd /tmp/kukui-kernel
-
-# Download the APK
-cp /ctx/6.12.28-stb-cbm+.tar.gz .
+cd /ctx
 
 # Extract kernel image and modules from APK
-tar -xzf *.tar.gz
+tar -xzf 6.12.28-stb-cbm+.tar.gz.tar.gz -C custom_kernel
 
-# Move kernel image and modules to appropriate locations in the container
-# (Adjust paths as needed for your base image)
-cp -r boot /boot/vmlinuz-kukui
-cp -r lib/modules/* /lib/modules/
-
-# Optionally: update symlinks and run depmod
-ln -sf /boot/vmlinuz-kukui /boot/vmlinuz
-#depmod
-
-# Clean up
-cd /
-rm -rf /tmp/kukui-kernel
+copy -r custom_kernel/boot /boot
+copy -r custom_kernel/lib/modules /lib/modules
 
 ### Install packages
 
