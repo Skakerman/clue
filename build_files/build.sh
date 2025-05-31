@@ -6,8 +6,9 @@ KERNEL_VERSION="6.12.28-stb-cbm+"
 
 cd /ctx
 
-# Extract kernel image and modules from APK
-tar -xzf ${KERNEL_VERSION}.tar.gz -C custom_kernel
+# Extract kernel image and modules from tar.gz to custom_kernel directory
+mkdir -p custom_kernel
+tar -xzf "/ctx/${KERNEL_VERSION}.tar.gz" -C custom_kernel
 
 copy -r custom_kernel/boot /boot
 copy -r custom_kernel/lib/modules /lib/modules
